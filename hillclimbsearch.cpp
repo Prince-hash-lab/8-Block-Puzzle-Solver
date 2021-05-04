@@ -239,6 +239,6 @@ int main() {
 	int x = 0, y = 1;    //position of 0 initially   //शुरुआत में 0 का स्थान
     node * parent =NULL;
     bestfirstsearch(initial, x, y, final ,parent);  // calling bfs  बेस्ट फ्रिस्ट खोज को कॉल करें
-    cout<<"Number of states printed  यह पहले से ही जानते होंगे कि यह क्या है"<<count1;  
+    cout<<"Number of states printed "<<count1;  
 	return 0;     //आप यह पहले से ही जानते होंगे कि यह क्या है return 0
 }
