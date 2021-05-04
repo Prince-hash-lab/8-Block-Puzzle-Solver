@@ -1,0 +1,12 @@
+{
+    "python.pythonPath": "C:\\Users\\my pc\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+    "files.associations": {
+        "ostream": "cpp",
+        "new": "cpp",
+        "array": "cpp",
+        "bitset": "cpp",
+        "initializer_list": "cpp",
+        "regex": "cpp",
+        "utility": "cpp"
+    }
+}
