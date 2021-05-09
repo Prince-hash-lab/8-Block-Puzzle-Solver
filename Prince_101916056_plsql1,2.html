@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Prince_sql_ass7&8</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Prince_101916056_plsql1,2</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -17518,7 +17518,7 @@ a.anchor-link {
 
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Prince">Prince<a class="anchor-link" href="#Prince">&#182;</a></h1><h1 id="101916056">101916056<a class="anchor-link" href="#101916056">&#182;</a></h1><h1 id="2cs10">2cs10<a class="anchor-link" href="#2cs10">&#182;</a></h1><h1 id="assignment-7">assignment 7<a class="anchor-link" href="#assignment-7">&#182;</a></h1><h1 id="&#2309;&#2360;&#2366;&#2311;&#2344;&#2350;&#2375;&#2306;&#2335;-7">&#2309;&#2360;&#2366;&#2311;&#2344;&#2350;&#2375;&#2306;&#2335; 7<a class="anchor-link" href="#&#2309;&#2360;&#2366;&#2311;&#2344;&#2350;&#2375;&#2306;&#2335;-7">&#182;</a></h1>
+<h1 id="Assigment-1-PL/SQL">Assigment 1 PL/SQL<a class="anchor-link" href="#Assigment-1-PL/SQL">&#182;</a></h1><h2 id="Prince-101916056-2cs10">Prince 101916056 2cs10<a class="anchor-link" href="#Prince-101916056-2cs10">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
@@ -17526,65 +17526,21 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#tables are created here </span>
-<span class="c1"># तालिकाएँ यहाँ बनाई गई हैं</span>
-<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">Salespeople</span> 
-<span class="p">(</span> 
-  <span class="n">snum</span>   <span class="n">integer</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span> 
-  <span class="n">sname</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="n">unique</span><span class="p">,</span> 
-  <span class="n">city</span>      <span class="n">CHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> 
-  <span class="n">comm</span>  <span class="n">NUMBER</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> 
-<span class="p">);</span>
-<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">Customers</span> 
-<span class="p">(</span> 
-  <span class="n">cnum</span>   <span class="n">integer</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span> 
-  <span class="n">cname</span> <span class="n">char</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">,</span> 
-  <span class="n">city</span>      <span class="n">CHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="ow">not</span> <span class="n">null</span><span class="p">,</span> 
-  <span class="n">snum</span> <span class="n">integer</span> <span class="n">REFERENCES</span> <span class="n">Salespeople</span> 
-<span class="p">);</span>
-<span class="n">CREATE</span> <span class="n">TABLE</span> <span class="n">orders</span> 
-<span class="p">(</span> 
-  <span class="n">onum</span>   <span class="n">integer</span> <span class="n">PRIMARY</span> <span class="n">KEY</span><span class="p">,</span> 
-  <span class="n">amt</span>      <span class="n">DECIMAL</span><span class="p">,</span> 
-  <span class="n">odate</span>   <span class="n">DATE</span> <span class="n">NOT</span> <span class="n">NULL</span><span class="p">,</span> 
-  <span class="n">cnum</span>   <span class="n">INTEGER</span> <span class="p">,</span> 
-  <span class="n">snum</span>   <span class="n">INTEGER</span> <span class="p">,</span> 
-  <span class="n">FOREIGN</span> <span class="n">KEY</span> <span class="p">(</span><span class="n">snum</span><span class="p">)</span> <span class="n">REFERENCES</span> <span class="n">Salespeople</span><span class="p">,</span> 
-  <span class="n">FOREIGN</span> <span class="n">KEY</span> <span class="p">(</span><span class="n">cnum</span><span class="p">)</span> <span class="n">REFERENCES</span> <span class="n">Customers</span> 
-<span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Salespeople</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">1001</span><span class="p">,</span><span class="s1">&#39;Peel&#39;</span><span class="p">,</span><span class="s1">&#39;London&#39;</span><span class="p">,</span><span class="o">.</span><span class="mi">12</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Salespeople</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">1002</span><span class="p">,</span><span class="s1">&#39;Serres&#39;</span><span class="p">,</span><span class="s1">&#39;Sanjose&#39;</span><span class="p">,</span><span class="o">.</span><span class="mi">13</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Salespeople</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">1004</span><span class="p">,</span><span class="s1">&#39;Motika&#39;</span><span class="p">,</span><span class="s1">&#39;Landon&#39;</span><span class="p">,</span><span class="o">.</span><span class="mi">11</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Salespeople</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">1007</span><span class="p">,</span><span class="s1">&#39;Rifkin&#39;</span><span class="p">,</span><span class="s1">&#39;Barcelona&#39;</span><span class="p">,</span><span class="o">.</span><span class="mi">15</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Salespeople</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">1003</span><span class="p">,</span><span class="s1">&#39;Axelrod&#39;</span><span class="p">,</span><span class="s1">&#39;Newyork&#39;</span><span class="p">,</span><span class="o">.</span><span class="mi">10</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Salespeople</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">1009</span><span class="p">,</span><span class="s1">&#39;Rafale&#39;</span><span class="p">,</span><span class="s1">&#39;Barcelona&#39;</span><span class="p">,</span><span class="o">.</span><span class="mi">15</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Salespeople</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">1008</span><span class="p">,</span><span class="s1">&#39;Axe&#39;</span><span class="p">,</span><span class="s1">&#39;Newyork&#39;</span><span class="p">,</span><span class="o">.</span><span class="mi">10</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Salespeople</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">1011</span><span class="p">,</span><span class="s1">&#39;chapsi&#39;</span><span class="p">,</span><span class="s1">&#39;Newyork&#39;</span><span class="p">,</span><span class="o">.</span><span class="mi">11</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Customers</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">2001</span><span class="p">,</span><span class="s1">&#39;Hoffman&#39;</span><span class="p">,</span><span class="s1">&#39;London&#39;</span><span class="p">,</span><span class="mi">1001</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Customers</span>  <span class="n">VALUES</span> <span class="p">(</span><span class="mi">2002</span><span class="p">,</span><span class="s1">&#39;Giovanni&#39;</span><span class="p">,</span><span class="s1">&#39;Rome&#39;</span><span class="p">,</span><span class="mi">1003</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Customers</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">2003</span><span class="p">,</span><span class="s1">&#39;Liu&#39;</span><span class="p">,</span><span class="s1">&#39;Sanjose&#39;</span><span class="p">,</span><span class="mi">1002</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Customers</span>  <span class="n">VALUES</span> <span class="p">(</span><span class="mi">2004</span><span class="p">,</span><span class="s1">&#39;Grass&#39;</span><span class="p">,</span><span class="s1">&#39;Berlin&#39;</span><span class="p">,</span><span class="mi">1002</span><span class="p">);</span>
-
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Customers</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">2006</span><span class="p">,</span><span class="s1">&#39;clements&#39;</span><span class="p">,</span><span class="s1">&#39;London&#39;</span><span class="p">,</span><span class="mi">1001</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Customers</span>  <span class="n">VALUES</span> <span class="p">(</span><span class="mi">2008</span><span class="p">,</span><span class="s1">&#39;Cisneros&#39;</span><span class="p">,</span><span class="s1">&#39;Sanjose&#39;</span><span class="p">,</span><span class="mi">1007</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Customers</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">2007</span><span class="p">,</span><span class="s1">&#39;Pereira&#39;</span><span class="p">,</span><span class="s1">&#39;Rome&#39;</span><span class="p">,</span><span class="mi">1004</span><span class="p">);</span>
-<span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">Customers</span><span class="p">;</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">orders</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">3001</span><span class="p">,</span><span class="mf">18.69</span><span class="p">,</span><span class="s1">&#39;3-10-1990&#39;</span><span class="p">,</span><span class="mi">2008</span><span class="p">,</span><span class="mi">1007</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">orders</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">3003</span><span class="p">,</span><span class="mf">767.19</span><span class="p">,</span><span class="s1">&#39;3-10-1990&#39;</span><span class="p">,</span><span class="mi">2001</span><span class="p">,</span><span class="mi">1001</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">orders</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">3002</span><span class="p">,</span><span class="mf">1900.10</span><span class="p">,</span><span class="s1">&#39;3-10-1990&#39;</span><span class="p">,</span><span class="mi">2007</span><span class="p">,</span><span class="mi">1004</span><span class="p">);</span>
-
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">orders</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">3005</span><span class="p">,</span><span class="mf">5160.45</span><span class="p">,</span><span class="s1">&#39;3-oct-1990&#39;</span><span class="p">,</span><span class="mi">2003</span><span class="p">,</span><span class="mi">1002</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">orders</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">3006</span><span class="p">,</span><span class="mf">1098.16</span><span class="p">,</span><span class="s1">&#39;3-oct-1990&#39;</span><span class="p">,</span><span class="mi">2008</span><span class="p">,</span><span class="mi">1007</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">orders</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">3009</span><span class="p">,</span><span class="mf">1713.23</span><span class="p">,</span><span class="s1">&#39;4-oct-1990&#39;</span><span class="p">,</span><span class="mi">2002</span><span class="p">,</span><span class="mi">1003</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">orders</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">3007</span><span class="p">,</span><span class="mf">75.75</span><span class="p">,</span><span class="s1">&#39;4-oct-1990&#39;</span><span class="p">,</span><span class="mi">2004</span><span class="p">,</span><span class="mi">1002</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">orders</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">3008</span><span class="p">,</span><span class="mf">4273.00</span><span class="p">,</span><span class="s1">&#39;5-oct-1990&#39;</span><span class="p">,</span><span class="mi">2006</span><span class="p">,</span><span class="mi">1001</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">orders</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">3010</span><span class="p">,</span><span class="mf">1309.95</span><span class="p">,</span><span class="s1">&#39;6-oct-1990&#39;</span><span class="p">,</span><span class="mi">2004</span><span class="p">,</span><span class="mi">1002</span><span class="p">);</span>
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">orders</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">3011</span><span class="p">,</span><span class="mf">9891.88</span><span class="p">,</span><span class="s1">&#39;6-oct-1990&#39;</span><span class="p">,</span><span class="mi">2006</span><span class="p">,</span><span class="mi">1001</span><span class="p">);</span>
-
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">orders</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">300</span><span class="p">,</span><span class="mf">5160.45</span><span class="p">,</span><span class="s1">&#39;3-oct-1990&#39;</span><span class="p">,</span><span class="mi">2003</span><span class="p">,</span><span class="mi">1002</span><span class="p">);</span>
-<span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">salespeople</span><span class="p">;</span>
-<span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">orders</span><span class="p">;</span>
-<span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">customers</span><span class="p">;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">1</span><span class="p">)</span> <span class="n">WAP</span> <span class="n">to</span> <span class="n">find</span> <span class="n">the</span> <span class="n">greatest</span> <span class="n">of</span> <span class="n">three</span> <span class="n">numbers</span><span class="o">.</span> 
+<span class="c1"># answer  उत्तर</span>
+<span class="n">declare</span>
+<span class="n">a</span> <span class="n">number</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">:=</span><span class="mi">7</span><span class="p">;</span>
+<span class="n">b</span> <span class="n">number</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">:=</span><span class="mi">6</span><span class="p">;</span>
+<span class="n">c</span> <span class="n">number</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">:=</span><span class="mi">5</span><span class="p">;</span>
+<span class="n">begin</span>
+<span class="k">if</span> <span class="n">a</span><span class="o">&gt;=</span><span class="n">b</span> <span class="ow">and</span> <span class="n">a</span><span class="o">&gt;=</span><span class="n">c</span>  <span class="n">then</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;greatest of all is &#39;</span> <span class="o">||</span> <span class="n">a</span><span class="p">);</span>
+<span class="n">elsif</span> <span class="n">b</span><span class="o">&gt;=</span><span class="n">a</span> <span class="ow">and</span> <span class="n">b</span><span class="o">&gt;=</span><span class="n">c</span>  <span class="n">then</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;greatest of all is &#39;</span> <span class="o">||</span> <span class="n">b</span><span class="p">);</span>
+<span class="k">else</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;greatest of all is &#39;</span> <span class="o">||</span> <span class="n">c</span><span class="p">);</span>
+<span class="n">end</span> <span class="k">if</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
 </pre></div>
 
      </div>
@@ -17598,29 +17554,17 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="n">q1</span>
-<span class="o">--</span><span class="mi">1</span><span class="p">)</span> <span class="n">Count</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">Salesperson</span> <span class="n">whose</span> <span class="n">name</span> <span class="n">begin</span> <span class="k">with</span> <span class="err">‘</span><span class="n">a</span><span class="err">’</span><span class="o">/</span><span class="err">’</span><span class="n">A</span><span class="err">’</span><span class="o">.</span>
-<span class="n">select</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">where</span> <span class="n">sname</span> <span class="n">like</span> <span class="s1">&#39;a%&#39;</span> <span class="ow">or</span> <span class="n">sname</span> <span class="n">like</span> <span class="s1">&#39;A%&#39;</span><span class="p">;</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output--&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output  &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output--&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-<span class="mi">2</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">2</span><span class="p">)</span> <span class="n">WAP</span> <span class="n">to</span> <span class="n">check</span> <span class="n">whether</span> <span class="n">number</span> <span class="ow">is</span> <span class="n">odd</span> <span class="ow">or</span> <span class="n">even</span><span class="o">.</span> 
+<span class="c1"># answer उत्तर</span>
+<span class="n">declare</span>
+<span class="n">a</span> <span class="n">number</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">:=</span><span class="mi">7</span><span class="p">;</span>
+<span class="n">begin</span>
+<span class="k">if</span> <span class="n">mod</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">=</span><span class="mi">0</span>  <span class="n">then</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39; number is even &#39;</span><span class="p">);</span>
+<span class="k">else</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39; number is odd &#39;</span><span class="p">);</span>
+<span class="n">end</span> <span class="k">if</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
 </pre></div>
 
      </div>
@@ -17634,67 +17578,28 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">2</span><span class="p">)</span> <span class="n">Display</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">Salesperson</span> <span class="n">whose</span> <span class="nb">all</span> <span class="n">orders</span> <span class="n">worth</span> <span class="ow">is</span> <span class="n">more</span> <span class="n">than</span> <span class="n">Rs</span><span class="o">.</span> <span class="mf">2000.</span>
-<span class="o">--</span><span class="n">q2</span>   <span class="nb">next</span> <span class="n">both</span> <span class="n">queries</span> <span class="n">are</span> <span class="n">correct</span> <span class="n">अगले</span> <span class="n">दोनों</span> <span class="n">उत्तर</span> <span class="n">सही</span> <span class="n">हैं</span> 
-<span class="n">select</span> <span class="n">sname</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">where</span> <span class="n">snum</span> <span class="ow">in</span> <span class="p">(</span><span class="n">select</span> <span class="n">snum</span> <span class="kn">from</span> <span class="nn">orders</span> <span class="n">group</span> <span class="n">by</span> <span class="n">snum</span> <span class="n">having</span> <span class="nb">sum</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">2000</span><span class="p">);</span>
-<span class="n">select</span> <span class="n">distinct</span> <span class="n">s</span><span class="o">.</span><span class="n">sname</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s</span> <span class="n">join</span> <span class="n">orders</span> <span class="n">o</span> <span class="n">on</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">snum</span><span class="o">=</span><span class="n">o</span><span class="o">.</span><span class="n">snum</span><span class="p">)</span> <span class="n">group</span> <span class="n">by</span> <span class="n">sname</span> <span class="n">having</span> <span class="nb">sum</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">amt</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">2000</span><span class="p">;</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output--&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output  &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output--&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SNAME</span>
-<span class="n">Serres</span>
-<span class="n">Peel</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="n">q3</span>
-<span class="o">--</span><span class="mi">3</span><span class="p">)</span> <span class="n">Count</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">Salesperson</span> <span class="n">belonging</span> <span class="n">to</span> <span class="n">Newyork</span><span class="o">.</span>
-<span class="n">select</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">where</span> <span class="n">city</span><span class="o">=</span><span class="s1">&#39;Newyork&#39;</span><span class="p">;</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-<span class="mi">3</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">3</span><span class="p">)</span> <span class="n">WAP</span> <span class="n">to</span> <span class="n">find</span> <span class="n">the</span> <span class="n">grade</span><span class="o">.</span> <span class="n">Consider</span> <span class="n">the</span> <span class="n">following</span><span class="p">:</span> 
+<span class="o">--</span> <span class="n">Marks</span> <span class="o">&gt;</span> <span class="mi">80</span> <span class="n">A</span> <span class="n">grade</span> 
+<span class="o">--</span><span class="n">Marks</span> <span class="o">&gt;</span><span class="mi">70</span> <span class="n">B</span> <span class="n">grade</span> 
+<span class="o">--</span><span class="n">Marks</span> <span class="o">&gt;</span><span class="mi">50</span> <span class="n">C</span> <span class="n">grade</span> 
+<span class="o">--</span><span class="n">Marks</span> <span class="o">&gt;</span> <span class="mi">40</span> <span class="n">D</span> <span class="n">grade</span> 
+<span class="o">--</span><span class="n">Marks</span> <span class="o">&lt;</span> <span class="mi">40</span> <span class="n">E</span> <span class="n">grade</span> 
+<span class="c1"># answer उत्तर</span>
+<span class="n">declare</span>
+<span class="n">a</span> <span class="n">number</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">:=</span><span class="mi">75</span><span class="p">;</span>
+<span class="n">begin</span>
+<span class="k">if</span> <span class="n">a</span><span class="o">&gt;=</span><span class="mi">80</span>  <span class="n">then</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;A grade &#39;</span><span class="p">);</span>
+<span class="n">elsif</span> <span class="n">a</span><span class="o">&gt;=</span><span class="mi">70</span> <span class="ow">and</span> <span class="n">a</span><span class="o">&lt;</span><span class="mi">80</span>  <span class="n">then</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;B grade &#39;</span><span class="p">);</span>
+<span class="n">elsif</span> <span class="n">a</span><span class="o">&gt;=</span><span class="mi">50</span> <span class="ow">and</span> <span class="n">a</span><span class="o">&lt;</span><span class="mi">70</span>  <span class="n">then</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;C grade &#39;</span><span class="p">);</span>
+<span class="n">elsif</span> <span class="n">a</span><span class="o">&gt;=</span><span class="mi">40</span> <span class="ow">and</span> <span class="n">a</span><span class="o">&lt;</span><span class="mi">50</span>  <span class="n">then</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;D grade &#39;</span><span class="p">);</span>
+<span class="k">else</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;E grade &#39;</span><span class="p">);</span>
+<span class="n">end</span> <span class="k">if</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
 </pre></div>
 
      </div>
@@ -17708,29 +17613,17 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">4</span><span class="p">)</span> <span class="n">Display</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">Salespeople</span> <span class="n">belonging</span> <span class="n">to</span> <span class="n">Landon</span> <span class="ow">and</span> <span class="n">belonging</span> <span class="n">to</span> <span class="n">Paris</span><span class="o">.</span>
-<span class="o">--</span><span class="n">q4</span>
-<span class="n">select</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">where</span> <span class="n">city</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;Landon&#39;</span><span class="p">,</span><span class="s1">&#39;Paris&#39;</span><span class="p">);</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
-<span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">4</span><span class="p">)</span> <span class="n">WAP</span> <span class="n">to</span> <span class="nb">print</span> <span class="n">the</span> <span class="n">table</span> <span class="n">of</span> <span class="n">a</span> <span class="n">given</span> <span class="n">number</span><span class="o">.</span><span class="p">(</span><span class="n">use</span> <span class="k">for</span> <span class="n">loop</span><span class="p">)</span> 
+<span class="c1"># answer उत्तर</span>
+<span class="n">declare</span>
+<span class="n">a</span> <span class="n">number</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">:=</span><span class="mi">7</span><span class="p">;</span>
+<span class="n">res</span> <span class="n">number</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">begin</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="mf">1.</span><span class="o">.</span><span class="mi">10</span> <span class="n">loop</span>
+    <span class="n">res</span><span class="o">:=</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">;</span>
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="n">a</span><span class="o">||</span><span class="s1">&#39;x&#39;</span><span class="o">||</span><span class="n">c</span><span class="o">||</span><span class="s1">&#39;=&#39;</span><span class="o">||</span><span class="n">res</span><span class="p">);</span>
+<span class="n">end</span> <span class="n">loop</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
 </pre></div>
 
      </div>
@@ -17744,9 +17637,102 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">5</span><span class="p">)</span> <span class="n">Display</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">orders</span> <span class="n">taken</span> <span class="n">by</span> <span class="n">each</span> <span class="n">Salesperson</span> <span class="ow">and</span> <span class="n">their</span> <span class="n">date</span> <span class="n">of</span> <span class="n">orders</span><span class="o">.</span>
-<span class="o">--</span><span class="n">q5</span>
-<span class="n">select</span> <span class="nb">sum</span><span class="p">(</span><span class="n">select</span> <span class="n">s</span><span class="o">.</span><span class="n">sname</span><span class="p">,</span><span class="n">o</span><span class="o">.</span><span class="n">snum</span><span class="p">,</span><span class="n">count</span><span class="p">(</span><span class="n">o</span><span class="o">.</span><span class="n">onum</span><span class="p">),</span><span class="n">o</span><span class="o">.</span><span class="n">odate</span> <span class="kn">from</span> <span class="nn">orders</span> <span class="n">o</span> <span class="n">full</span> <span class="n">outer</span> <span class="n">join</span> <span class="n">salespeople</span> <span class="n">s</span> <span class="n">on</span> <span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">snum</span><span class="o">=</span><span class="n">o</span><span class="o">.</span><span class="n">snum</span><span class="p">)</span> <span class="n">group</span> <span class="n">by</span> <span class="n">distinct</span> <span class="n">s</span><span class="o">.</span><span class="n">sname</span><span class="p">,</span><span class="n">o</span><span class="o">.</span><span class="n">snum</span><span class="p">,</span><span class="n">o</span><span class="o">.</span><span class="n">odate</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">group</span> <span class="n">by</span> <span class="n">sname</span><span class="p">;</span>  <span class="o">--</span><span class="n">missing</span> <span class="n">expression</span>  <span class="n">नामौजूद</span> <span class="n">अभिव्यक्ति</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">5</span><span class="p">)</span> <span class="n">WAP</span> <span class="n">to</span> <span class="n">find</span> <span class="n">out</span> <span class="n">the</span> <span class="n">factorial</span> <span class="n">of</span> <span class="n">a</span> <span class="n">given</span> <span class="n">number</span><span class="o">.</span><span class="p">(</span><span class="n">use</span> <span class="k">while</span> <span class="n">loop</span><span class="p">)</span> 
+<span class="c1"># answer  उत्तर</span>
+<span class="n">declare</span>
+<span class="n">a</span> <span class="n">number</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">:=</span><span class="mi">7</span><span class="p">;</span>
+<span class="n">res1</span> <span class="n">number</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">:=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">begin</span>
+    <span class="k">while</span> <span class="n">a</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="n">loop</span>
+        <span class="n">res1</span><span class="o">:=</span><span class="n">res1</span><span class="o">*</span><span class="n">a</span><span class="p">;</span>
+        <span class="n">a</span><span class="o">:=</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">end</span> <span class="n">loop</span><span class="p">;</span>
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="n">res1</span><span class="p">);</span>
+<span class="n">end</span><span class="p">;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">6</span><span class="p">)</span> <span class="n">WAP</span> <span class="n">to</span> <span class="n">find</span> <span class="n">out</span> <span class="n">the</span> <span class="n">Fibonacci</span> <span class="n">series</span><span class="o">.</span>
+<span class="c1"># answer  उत्तर</span>
+<span class="n">declare</span>
+<span class="n">a</span> <span class="n">number</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">:=</span><span class="mi">7</span><span class="p">;</span>
+<span class="n">res2</span> <span class="n">number</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="n">res1</span> <span class="n">number</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">:=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">res</span> <span class="n">number</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">:=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">begin</span>
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="n">res1</span><span class="p">);</span>
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="n">res</span><span class="p">);</span>
+    <span class="k">while</span> <span class="n">a</span><span class="o">&gt;=</span><span class="mi">3</span> <span class="n">loop</span>
+        <span class="n">res2</span><span class="o">:=</span><span class="n">res1</span><span class="o">+</span><span class="n">res</span><span class="p">;</span>
+        <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="n">res2</span><span class="p">);</span>
+        <span class="n">res1</span><span class="o">:=</span><span class="n">res</span><span class="p">;</span>
+        <span class="n">res</span><span class="o">:=</span><span class="n">res2</span><span class="p">;</span>
+        <span class="n">a</span><span class="o">:=</span><span class="n">a</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">end</span> <span class="n">loop</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">7</span><span class="p">)</span> <span class="n">WAP</span> <span class="n">to</span> <span class="n">find</span> <span class="n">the</span> <span class="n">reverse</span> <span class="n">of</span> <span class="n">a</span> <span class="n">number</span><span class="p">(</span><span class="n">use</span> <span class="n">exit</span> <span class="n">when</span> <span class="n">stement</span><span class="p">)</span>
+<span class="c1"># answer  उत्तर</span>
+<span class="n">declare</span>
+<span class="n">a</span> <span class="n">number</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">:=</span><span class="mi">7</span><span class="p">;</span>
+<span class="n">res2</span> <span class="n">number</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">:=</span><span class="n">a</span><span class="p">;</span>
+<span class="n">i</span> <span class="n">number</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">:=-</span><span class="mi">1</span><span class="o">*</span><span class="n">a</span><span class="p">;</span>
+<span class="n">begin</span>
+   <span class="n">loop</span>
+        <span class="n">exit</span> <span class="n">when</span> <span class="n">res2</span><span class="o">=</span><span class="n">i</span><span class="p">;</span>
+        <span class="n">res2</span><span class="o">:=</span><span class="n">res2</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+   <span class="n">end</span> <span class="n">loop</span><span class="p">;</span>
+   <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="n">res2</span><span class="p">);</span>
+<span class="n">end</span><span class="p">;</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">8</span><span class="p">)</span> <span class="n">WAP</span> <span class="n">to</span> <span class="n">reverse</span> <span class="n">a</span> <span class="n">string</span><span class="o">.</span>
+<span class="c1"># answer  उत्तर</span>
+<span class="n">declare</span>
+<span class="nb">str</span> <span class="n">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">:=</span><span class="s1">&#39;Prince&#39;</span><span class="p">;</span>
+<span class="n">rvstr</span>  <span class="n">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+<span class="n">indx</span> <span class="n">number</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">begin</span>
+    <span class="n">indx</span><span class="o">:=</span><span class="n">length</span><span class="p">(</span><span class="nb">str</span><span class="p">);</span>
+    <span class="k">while</span> <span class="n">indx</span><span class="o">&gt;</span><span class="mi">0</span> <span class="n">loop</span>
+        <span class="n">rvstr</span><span class="o">:=</span><span class="n">rvstr</span> <span class="o">||</span> <span class="n">substr</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span><span class="n">indx</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">indx</span><span class="o">:=</span><span class="n">indx</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="n">end</span> <span class="n">loop</span><span class="p">;</span>
+     <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="n">rvstr</span><span class="p">);</span>
+<span class="n">end</span><span class="p">;</span>
 </pre></div>
 
      </div>
@@ -17757,7 +17743,7 @@ a.anchor-link {
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
+<h1 id="Assignment-2-PL/SQL">Assignment 2 PL/SQL<a class="anchor-link" href="#Assignment-2-PL/SQL">&#182;</a></h1>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
@@ -17765,23 +17751,27 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">6</span><span class="p">)</span> <span class="n">Write</span> <span class="n">a</span> <span class="n">query</span> <span class="n">that</span> <span class="n">counts</span> <span class="n">the</span> <span class="n">number</span> <span class="n">of</span> <span class="n">Salespeople</span> <span class="n">registering</span> <span class="n">orders</span> <span class="k">for</span> <span class="n">each</span> <span class="n">day</span><span class="o">.</span>
-<span class="o">--</span><span class="n">q6</span>
-<span class="n">select</span> <span class="n">odate</span><span class="p">,</span><span class="n">count</span><span class="p">(</span><span class="n">distinct</span> <span class="n">snum</span><span class="p">)</span>  <span class="kn">from</span> <span class="nn">orders</span> <span class="n">group</span> <span class="n">by</span> <span class="n">odate</span><span class="p">;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mf">1.</span> <span class="n">PL</span><span class="o">/</span><span class="n">SQL</span> <span class="n">block</span> <span class="n">to</span> <span class="n">update</span> <span class="n">total</span> <span class="n">sal</span> <span class="k">for</span> <span class="n">empno</span> <span class="mf">100.</span> 
+<span class="n">Eno</span><span class="p">,</span><span class="n">ename</span><span class="p">,</span> <span class="n">bp</span><span class="p">,</span><span class="n">da</span><span class="p">,</span><span class="n">hra</span><span class="p">,</span><span class="n">total</span><span class="o">.</span>
+<span class="c1"># answer  उत्तर</span>
+<span class="n">declare</span> 
+<span class="n">rw</span>  <span class="n">emp</span><span class="o">%</span><span class="k">rowtype</span>; 
+<span class="n">begin</span> 
+    <span class="n">rw</span><span class="o">.</span><span class="n">bp</span><span class="o">:=</span><span class="mi">1800000</span><span class="p">;</span> 
+    <span class="n">rw</span><span class="o">.</span><span class="n">da</span><span class="o">:=</span><span class="mi">25</span><span class="p">;</span> 
+    <span class="n">rw</span><span class="o">.</span><span class="n">hra</span><span class="o">:=</span><span class="mi">35</span><span class="p">;</span> 
+    <span class="n">rw</span><span class="o">.</span><span class="n">total</span><span class="o">:=</span><span class="n">rw</span><span class="o">.</span><span class="n">bp</span><span class="o">+</span><span class="p">(</span><span class="n">rw</span><span class="o">.</span><span class="n">da</span><span class="o">*</span><span class="n">rw</span><span class="o">.</span><span class="n">bp</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">rw</span><span class="o">.</span><span class="n">hra</span><span class="o">*</span><span class="n">rw</span><span class="o">.</span><span class="n">bp</span><span class="p">);</span> 
+    <span class="n">update</span> <span class="n">emp</span>  
+    <span class="nb">set</span> 
+        <span class="n">bp</span><span class="o">=</span><span class="n">rw</span><span class="o">.</span><span class="n">bp</span><span class="p">,</span> 
+        <span class="n">da</span><span class="o">=</span><span class="n">rw</span><span class="o">.</span><span class="n">da</span><span class="p">,</span> 
+        <span class="n">hra</span><span class="o">=</span><span class="n">rw</span><span class="o">.</span><span class="n">hra</span><span class="p">,</span> 
+        <span class="n">total</span><span class="o">=</span><span class="n">rw</span><span class="o">.</span><span class="n">total</span> 
+    <span class="n">where</span>  
+        <span class="n">eno</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span> 
+    <span class="n">select</span> <span class="o">*</span> <span class="n">into</span> <span class="n">rw</span> <span class="kn">from</span> <span class="nn">emp</span><span class="p">;</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39; updated values &#39;</span><span class="o">||</span> <span class="n">rw</span><span class="o">.</span><span class="n">eno</span> <span class="o">||</span><span class="s1">&#39; &#39;</span> <span class="o">||</span> <span class="n">rw</span><span class="o">.</span><span class="n">bp</span> <span class="o">||</span><span class="s1">&#39; &#39;</span> <span class="o">||</span> <span class="n">rw</span><span class="o">.</span><span class="n">da</span> <span class="o">||</span><span class="s1">&#39; &#39;</span><span class="o">||</span> <span class="n">rw</span><span class="o">.</span><span class="n">hra</span> <span class="o">||</span><span class="s1">&#39; &#39;</span><span class="o">||</span> <span class="n">rw</span><span class="o">.</span><span class="n">total</span><span class="p">);</span> 
+<span class="n">end</span><span class="p">;</span>
 </pre></div>
 
      </div>
@@ -17800,11 +17790,8 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ODATE</span>	    <span class="n">COUNT</span><span class="p">(</span><span class="n">DISTINCTSNUM</span><span class="p">)</span>
-<span class="mi">04</span><span class="o">-</span><span class="n">OCT</span><span class="o">-</span><span class="mi">90</span>	<span class="mi">2</span>
-<span class="mi">06</span><span class="o">-</span><span class="n">OCT</span><span class="o">-</span><span class="mi">90</span>	<span class="mi">2</span>
-<span class="mi">05</span><span class="o">-</span><span class="n">OCT</span><span class="o">-</span><span class="mi">90</span>	<span class="mi">1</span>
-<span class="mi">03</span><span class="o">-</span><span class="n">OCT</span><span class="o">-</span><span class="mi">90</span>	<span class="mi">2</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Statement</span> <span class="n">processed</span><span class="o">.</span>
+<span class="n">updated</span> <span class="n">values</span> <span class="mi">100</span> <span class="mi">1800000</span> <span class="mi">25</span> <span class="mi">35</span> <span class="mi">109800000</span>
 </pre></div>
 
      </div>
@@ -17812,15 +17799,46 @@ a.anchor-link {
 </div>
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">7</span><span class="p">)</span> <span class="n">Write</span> <span class="n">a</span> <span class="n">query</span> <span class="n">that</span> <span class="n">selects</span> <span class="n">the</span> <span class="n">first</span> <span class="n">customer</span> <span class="ow">in</span> <span class="n">alphabetical</span> <span class="n">order</span> <span class="p">,</span>  <span class="n">whose</span> <span class="n">name</span> <span class="n">begins</span> <span class="k">with</span> <span class="err">‘</span><span class="n">G</span><span class="err">’</span><span class="o">.</span>
-<span class="o">--</span><span class="n">q7</span>
-<span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">customers</span> <span class="n">where</span> <span class="n">cname</span> <span class="n">like</span> <span class="s1">&#39;G%&#39;</span> <span class="n">order</span> <span class="n">by</span> <span class="n">cname</span> <span class="n">FETCH</span> <span class="n">FIRST</span> <span class="mi">1</span> <span class="n">ROWS</span> <span class="n">ONLY</span><span class="p">;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mf">2.</span> <span class="n">PL</span><span class="o">/</span><span class="n">SQL</span> <span class="n">block</span> <span class="n">to</span> <span class="n">calculate</span> <span class="n">fine</span> <span class="k">for</span> <span class="n">rno</span> <span class="mi">100</span>
+<span class="n">Rno</span><span class="p">,</span> <span class="n">bookno</span><span class="p">,</span> <span class="n">doi</span><span class="p">,</span> <span class="n">dor</span><span class="p">,</span> <span class="n">fine</span>
+<span class="n">Fine</span> <span class="ow">is</span> <span class="n">rs</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">days</span><span class="o">&lt;</span><span class="mi">7</span>
+<span class="n">Fine</span> <span class="ow">is</span> <span class="n">rs</span> <span class="mi">2</span> <span class="k">if</span> <span class="n">days</span><span class="o">&lt;</span><span class="mi">14</span> <span class="ow">and</span> <span class="o">&gt;</span><span class="mi">7</span>
+<span class="n">Fine</span> <span class="ow">is</span> <span class="n">rs</span> <span class="mi">3</span> <span class="k">if</span> <span class="n">days</span><span class="o">&gt;</span><span class="mi">14</span>
+<span class="n">Amount</span> <span class="n">mentioned</span> <span class="ow">is</span> <span class="k">for</span> <span class="n">each</span> <span class="n">day</span><span class="o">.</span>
+<span class="c1"># answer  उत्तर</span>
+
+<span class="n">declare</span> 
+<span class="n">rw</span>  <span class="n">std</span><span class="o">%</span><span class="k">rowtype</span>; 
+<span class="n">noofdays</span>  <span class="n">number</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> 
+<span class="n">begin</span> 
+    <span class="n">select</span> <span class="o">*</span> <span class="n">into</span> <span class="n">rw</span> <span class="kn">from</span> <span class="nn">std</span> <span class="n">where</span> <span class="n">rno</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span> 
+    <span class="n">noofdays</span><span class="o">:=</span><span class="n">rw</span><span class="o">.</span><span class="n">dor</span><span class="o">-</span><span class="n">rw</span><span class="o">.</span><span class="n">doi</span><span class="p">;</span> 
+    <span class="k">if</span> <span class="n">noofdays</span><span class="o">&lt;</span><span class="mi">7</span> <span class="n">then</span>  
+        <span class="n">rw</span><span class="o">.</span><span class="n">fine</span><span class="o">:=</span><span class="n">noofdays</span><span class="o">*</span><span class="mi">1</span><span class="p">;</span> 
+    <span class="n">elsif</span> <span class="n">noofdays</span><span class="o">&gt;=</span><span class="mi">7</span> <span class="ow">and</span> <span class="n">noofdays</span><span class="o">&lt;</span><span class="mi">14</span> <span class="n">then</span>  
+        <span class="n">rw</span><span class="o">.</span><span class="n">fine</span><span class="o">:=</span><span class="n">noofdays</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span> 
+    <span class="k">else</span>  
+        <span class="n">rw</span><span class="o">.</span><span class="n">fine</span><span class="o">:=</span><span class="n">noofdays</span><span class="o">*</span><span class="mi">3</span><span class="p">;</span> 
+    <span class="n">end</span> <span class="k">if</span><span class="p">;</span> 
+    <span class="n">update</span> <span class="n">std</span> 
+    <span class="nb">set</span> 
+         <span class="n">fine</span><span class="o">=</span><span class="n">rw</span><span class="o">.</span><span class="n">fine</span> 
+    <span class="n">where</span>  
+        <span class="n">rno</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span> 
+    <span class="n">select</span> <span class="o">*</span> <span class="n">into</span> <span class="n">rw</span> <span class="kn">from</span> <span class="nn">std</span> <span class="n">where</span> <span class="n">rno</span><span class="o">=</span><span class="mi">100</span><span class="p">;</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39; fine is  &#39;</span><span class="o">||</span> <span class="n">rw</span><span class="o">.</span><span class="n">fine</span><span class="p">);</span> 
+<span class="n">end</span><span class="p">;</span>
 </pre></div>
 
      </div>
@@ -17839,8 +17857,8 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">CNUM</span>	<span class="n">CNAME</span>	    <span class="n">CITY</span>	    <span class="n">SNUM</span>
-<span class="mi">2002</span>	<span class="n">Giovanni</span>  	<span class="n">Rome</span>      	<span class="mi">1003</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Statement</span> <span class="n">processed</span><span class="o">.</span>
+<span class="n">fine</span> <span class="ow">is</span> <span class="mi">132</span>
 </pre></div>
 
      </div>
@@ -17848,15 +17866,38 @@ a.anchor-link {
 </div>
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">8</span><span class="p">)</span> <span class="n">Find</span> <span class="n">out</span> <span class="n">the</span> <span class="n">largest</span> <span class="n">orders</span> <span class="k">for</span> <span class="n">Snum</span> <span class="mi">1002</span> <span class="o">&amp;</span> <span class="mf">1007.</span>
-<span class="o">--</span><span class="n">q8</span>
-<span class="n">select</span> <span class="nb">max</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">orders</span> <span class="n">group</span> <span class="n">by</span> <span class="n">snum</span> <span class="n">having</span> <span class="n">snum</span> <span class="ow">in</span> <span class="p">(</span><span class="mi">1002</span><span class="p">,</span><span class="mi">1007</span><span class="p">);</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mf">3.</span> <span class="n">PL</span><span class="o">/</span><span class="n">SQL</span> <span class="n">block</span> <span class="n">that</span> <span class="n">performs</span> <span class="n">addition</span> <span class="p">(</span><span class="o">+</span><span class="p">),</span> <span class="n">subtraction</span> <span class="p">(</span><span class="o">-</span><span class="p">),</span> <span class="n">multiplication</span> <span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="ow">and</span> 
+<span class="n">division</span> <span class="p">(</span><span class="o">/</span><span class="p">)</span> <span class="n">of</span> <span class="n">two</span> <span class="n">numbers</span> <span class="k">as</span> <span class="n">choice</span> <span class="n">by</span> <span class="n">the</span> <span class="n">user</span><span class="o">.</span>
+<span class="c1"># answer   उत्तर</span>
+<span class="n">declare</span> 
+<span class="n">choice</span> <span class="n">char</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">:=</span><span class="s1">&#39;+&#39;</span><span class="p">;</span> 
+<span class="n">a</span> <span class="n">number</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">:=</span><span class="mi">6</span><span class="p">;</span> 
+<span class="n">b</span> <span class="n">number</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">:=</span><span class="mi">3</span><span class="p">;</span> 
+<span class="n">begin</span> 
+    <span class="k">if</span> <span class="n">choice</span><span class="o">=</span><span class="s1">&#39;+&#39;</span> <span class="n">then</span>  
+        <span class="n">a</span><span class="o">:=</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">;</span> 
+    <span class="n">elsif</span> <span class="n">choice</span><span class="o">=</span><span class="s1">&#39;-&#39;</span> <span class="n">then</span>  
+        <span class="n">a</span><span class="o">:=</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">;</span> 
+    <span class="n">elsif</span> <span class="n">choice</span><span class="o">=</span><span class="s1">&#39;*&#39;</span> <span class="n">then</span>  
+        <span class="n">a</span><span class="o">:=</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">;</span> 
+    <span class="n">elsif</span> <span class="n">choice</span><span class="o">=</span><span class="s1">&#39;/&#39;</span> <span class="n">then</span>  
+        <span class="n">a</span><span class="o">:=</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">;</span> 
+    <span class="k">else</span>  
+        <span class="n">NULL</span><span class="p">;</span> 
+    <span class="n">end</span> <span class="k">if</span><span class="p">;</span> 
+    <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;  choice is &#39;</span><span class="o">||</span> <span class="n">choice</span> <span class="o">||</span> <span class="s1">&#39; and output is &#39;</span> <span class="o">||</span><span class="n">a</span> <span class="p">);</span> 
+<span class="n">end</span><span class="p">;</span>
 </pre></div>
 
      </div>
@@ -17875,9 +17916,39 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">MAX</span><span class="p">(</span><span class="n">AMT</span><span class="p">)</span>
-<span class="mi">1098</span>
-<span class="mi">5160</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Statement</span> <span class="n">processed</span><span class="o">.</span>
+<span class="n">choice</span> <span class="ow">is</span> <span class="o">+</span> <span class="ow">and</span> <span class="n">output</span> <span class="ow">is</span> <span class="mi">9</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mf">4.</span> <span class="n">PL</span><span class="o">/</span><span class="n">SQL</span> <span class="n">block</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">multiplication</span> <span class="n">table</span> <span class="k">for</span> <span class="mi">3</span> <span class="n">to</span> <span class="n">n</span><span class="o">.</span>
+<span class="c1"># answer  उत्तर</span>
+<span class="n">declare</span>
+<span class="n">n</span> <span class="n">number</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">:=</span><span class="mi">7</span><span class="p">;</span>
+<span class="n">res</span> <span class="n">number</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">begin</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="mf">3.</span><span class="o">.</span><span class="n">n</span> <span class="n">loop</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="mf">1.</span><span class="o">.</span><span class="mi">10</span> <span class="n">loop</span>
+       <span class="n">res</span><span class="o">:=</span><span class="n">a</span><span class="o">*</span><span class="n">c</span><span class="p">;</span>
+       <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="n">a</span><span class="o">||</span><span class="s1">&#39;x&#39;</span><span class="o">||</span><span class="n">c</span><span class="o">||</span><span class="s1">&#39;=&#39;</span><span class="o">||</span><span class="n">res</span><span class="p">);</span>
+    <span class="n">end</span> <span class="n">loop</span><span class="p">;</span>
+<span class="n">end</span> <span class="n">loop</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
 </pre></div>
 
      </div>
@@ -17891,13 +17962,46 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">9</span><span class="p">)</span> <span class="n">Find</span> <span class="n">out</span> <span class="n">the</span> <span class="n">maximum</span> <span class="n">single</span> <span class="n">order</span> <span class="n">amount</span> <span class="n">of</span> <span class="n">a</span> <span class="n">Salesperson</span> <span class="n">over</span> <span class="n">Rs</span><span class="o">.</span> <span class="mi">3000</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">day</span><span class="o">.</span>
-<span class="o">--</span><span class="n">q9</span>  <span class="o">--</span> <span class="n">both</span> <span class="n">are</span> <span class="n">correct</span> <span class="ow">in</span> <span class="n">different</span> <span class="n">sense</span> <span class="n">of</span> <span class="n">question</span> <span class="n">दोनों</span> <span class="n">अलग</span><span class="o">-</span><span class="n">अलग</span> <span class="n">अर्थों</span> <span class="n">में</span> <span class="n">सही</span> <span class="n">हैं</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mf">5.</span> <span class="n">PL</span><span class="o">/</span><span class="n">SQL</span> <span class="n">block</span> <span class="n">to</span> <span class="nb">print</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span><span class="mi">20</span> <span class="n">by</span> <span class="n">using</span> <span class="n">For</span> <span class="n">Loop</span>
+<span class="c1"># answer  उत्तर</span>
 
-<span class="n">SELECT</span> <span class="n">snum</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">orders</span>
-   <span class="n">GROUP</span> <span class="n">BY</span> <span class="n">snum</span> <span class="n">having</span> <span class="nb">max</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">3000</span><span class="p">;</span>
+<span class="n">begin</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="mf">1.</span><span class="o">.</span><span class="mi">20</span> <span class="n">loop</span>
+         <span class="k">if</span> <span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="o">=</span><span class="mi">0</span> <span class="n">then</span> 
+           <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+          <span class="n">end</span> <span class="k">if</span><span class="p">;</span>
+    <span class="n">end</span> <span class="n">loop</span><span class="p">;</span>
+<span class="n">end</span><span class="p">;</span>
+</pre></div>
 
-<span class="n">select</span> <span class="nb">max</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">orders</span><span class="p">;</span>
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mf">6.</span> <span class="n">Pl</span><span class="o">/</span><span class="n">SQL</span> <span class="n">block</span> <span class="n">to</span> <span class="n">display</span> <span class="n">welcome</span> <span class="n">message</span> <span class="n">like</span> <span class="n">good</span> <span class="n">morning</span><span class="p">,</span> <span class="n">good</span> <span class="n">afternoon</span><span class="p">,</span> 
+<span class="n">good</span> <span class="n">night</span> <span class="n">depending</span> <span class="n">on</span> <span class="n">system</span> <span class="n">time</span><span class="o">.</span>
+<span class="c1"># answer  उत्तर</span>
+<span class="n">begin</span>  
+<span class="k">if</span> <span class="n">to_char</span><span class="p">(</span><span class="n">current_timestamp</span><span class="p">,</span><span class="s1">&#39;hh24&#39;</span><span class="p">)</span><span class="o">&gt;=</span><span class="mi">0</span> <span class="ow">and</span> <span class="n">to_char</span><span class="p">(</span><span class="n">current_timestamp</span><span class="p">,</span><span class="s1">&#39;hh24&#39;</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">12</span> <span class="n">then</span> 
+        <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;GOOD MORNING Mitra Pyare&#39;</span><span class="p">);</span>  <span class="o">--</span><span class="n">subha</span> <span class="n">ke</span> <span class="mi">12</span> <span class="n">bje</span> <span class="n">se</span> <span class="n">pehle</span>  
+<span class="n">elsif</span> <span class="n">to_char</span><span class="p">(</span><span class="n">current_timestamp</span><span class="p">,</span><span class="s1">&#39;hh24&#39;</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">12</span> <span class="ow">and</span> <span class="n">to_char</span><span class="p">(</span><span class="n">current_timestamp</span><span class="p">,</span><span class="s1">&#39;hh24&#39;</span><span class="p">)</span><span class="o">&lt;</span><span class="mi">20</span> <span class="n">then</span>  
+        <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;Good afternoon Mitra Pyare&#39;</span><span class="p">);</span> 
+<span class="k">else</span>  
+        <span class="n">dbms_output</span><span class="o">.</span><span class="n">put_line</span><span class="p">(</span><span class="s1">&#39;Good Night Mitra Pyare&#39;</span><span class="p">);</span> 
+<span class="n">end</span> <span class="k">if</span> <span class="p">;</span> 
+<span class="n">end</span><span class="p">;</span>
 </pre></div>
 
      </div>
@@ -17916,9 +18020,8 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SNUM</span>	<span class="n">MAX</span><span class="p">(</span><span class="n">AMT</span><span class="p">)</span>
-<span class="mi">1002</span>	<span class="mi">5160</span>
-<span class="mi">1001</span>	<span class="mi">9892</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Statement</span> <span class="n">processed</span><span class="o">.</span>
+<span class="n">GOOD</span> <span class="n">MORNING</span> <span class="n">Mitra</span> <span class="n">Pyare</span>
 </pre></div>
 
      </div>
@@ -17926,35 +18029,36 @@ a.anchor-link {
 </div>
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">MAX</span><span class="p">(</span><span class="n">AMT</span><span class="p">)</span>
-<span class="mi">9892</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">--</span><span class="mi">10</span><span class="p">)</span> <span class="n">Find</span> <span class="n">out</span> <span class="n">the</span> <span class="n">no</span><span class="o">.</span> <span class="n">of</span> <span class="n">Salesperson</span> <span class="n">who</span> <span class="n">belongs</span> <span class="n">to</span> <span class="n">same</span> <span class="n">city</span> <span class="ow">and</span>  <span class="n">have</span> <span class="n">same</span> <span class="n">commission</span> <span class="n">percentage</span><span class="o">.</span>
-
-<span class="o">--</span><span class="n">q10</span>  <span class="n">both</span> <span class="n">queries</span> <span class="n">are</span> <span class="n">correct</span> <span class="n">becuase</span> <span class="n">group</span> <span class="n">by</span><span class="p">(</span> <span class="n">city</span><span class="p">,</span> <span class="n">comm</span><span class="p">)</span> <span class="ow">is</span> <span class="n">same</span> <span class="k">as</span> <span class="n">group</span> <span class="n">by</span> <span class="n">city</span><span class="p">,</span> <span class="n">comm</span> 
-
-
-<span class="n">select</span> <span class="n">count</span><span class="p">(</span><span class="n">city</span><span class="p">),</span><span class="n">city</span><span class="p">,</span><span class="n">comm</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">group</span> <span class="n">by</span> <span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">comm</span><span class="p">)</span> <span class="n">having</span> <span class="n">count</span><span class="p">(</span><span class="n">city</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span> <span class="p">;</span>
-
-<span class="n">select</span> <span class="n">city</span> <span class="p">,</span><span class="n">comm</span><span class="p">,</span><span class="n">count</span><span class="p">(</span><span class="n">city</span><span class="p">),</span><span class="n">count</span><span class="p">(</span><span class="n">comm</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">group</span> <span class="n">by</span> <span class="n">city</span><span class="p">,</span><span class="n">comm</span> <span class="n">having</span> <span class="n">count</span><span class="p">(</span><span class="n">city</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">count</span><span class="p">(</span><span class="n">comm</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="mf">7.</span> <span class="n">WAP</span> <span class="n">that</span> <span class="n">calculate</span> <span class="n">simple</span> <span class="n">interest</span> <span class="k">for</span> <span class="n">principal</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">time</span> <span class="mi">2</span> <span class="n">years</span> <span class="ow">and</span> <span class="n">rate</span> <span class="n">of</span> 
+<span class="n">interest</span> <span class="n">varies</span> <span class="kn">from</span> <span class="mi">5</span> <span class="n">to</span> <span class="mf">15.</span> <span class="n">Store</span> <span class="n">it</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">table</span><span class="o">.</span>
+<span class="n">Principal</span> <span class="n">time</span> <span class="n">rate</span> <span class="n">interest</span>
+<span class="c1"># answer  उत्तर</span>
+<span class="n">declare</span> 
+<span class="n">pa</span>  <span class="n">simp_intrt</span><span class="o">.</span><span class="n">p_amt</span><span class="o">%</span><span class="k">type</span>:=1000; 
+<span class="n">tm</span>  <span class="n">simp_intrt</span><span class="o">.</span><span class="n">time</span><span class="o">%</span><span class="k">TYPE</span>:=2; 
+<span class="n">r</span>   <span class="n">simp_intrt</span><span class="o">.</span><span class="n">rate</span><span class="o">%</span><span class="k">type</span>:=5; 
+<span class="n">si</span>  <span class="n">simp_intrt</span><span class="o">.</span><span class="n">intrt</span><span class="o">%</span><span class="k">type</span>; 
+<span class="n">begin</span> 
+<span class="n">loop</span>  
+  <span class="n">si</span><span class="o">:=</span><span class="p">(</span><span class="n">pa</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="n">tm</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span><span class="p">;</span> 
+  <span class="n">insert</span> <span class="n">into</span> <span class="n">simp_intrt</span> <span class="n">values</span><span class="p">(</span><span class="n">pa</span><span class="p">,</span><span class="n">tm</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">si</span><span class="p">);</span> 
+  <span class="n">r</span><span class="o">:=</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span> 
+  <span class="n">exit</span> <span class="n">when</span> <span class="n">r</span><span class="o">&gt;</span><span class="mi">15</span><span class="p">;</span> 
+ 
+<span class="n">end</span> <span class="n">loop</span><span class="p">;</span> 
+<span class="n">end</span><span class="p">;</span>
+<span class="n">select</span><span class="o">*</span> <span class="kn">from</span> <span class="nn">simp_intrt</span><span class="p">;</span>
 </pre></div>
 
      </div>
@@ -17973,9 +18077,19 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">COUNT</span><span class="p">(</span><span class="n">CITY</span><span class="p">)</span>	<span class="n">CITY</span>	    <span class="n">COMM</span>
-<span class="mi">2</span>	<span class="n">N</span>        <span class="n">ewyork</span>   	<span class="o">.</span><span class="mi">1</span>
-<span class="mi">2</span>	<span class="n">Ba</span>        <span class="n">rcelona</span> 	<span class="o">.</span><span class="mi">15</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Statement</span> <span class="n">processed</span><span class="o">.</span>
+<span class="n">P_AMT</span>	<span class="n">TIME</span>	<span class="n">RATE</span>	<span class="n">INTRT</span>
+<span class="mi">1000</span>	<span class="mi">2</span>	        <span class="mi">5</span>	<span class="mi">100</span>
+<span class="mi">1000</span>	<span class="mi">2</span>	        <span class="mi">6</span>	<span class="mi">120</span>
+<span class="mi">1000</span>	<span class="mi">2</span>	        <span class="mi">7</span>	<span class="mi">140</span>
+<span class="mi">1000</span>	<span class="mi">2</span>	        <span class="mi">8</span>	<span class="mi">160</span>
+<span class="mi">1000</span>	<span class="mi">2</span>	        <span class="mi">9</span>	<span class="mi">180</span>
+<span class="mi">1000</span>	<span class="mi">2</span>	        <span class="mi">10</span>	<span class="mi">200</span>
+<span class="mi">1000</span>	<span class="mi">2</span>	        <span class="mi">11</span>	<span class="mi">220</span>
+<span class="mi">1000</span>	<span class="mi">2</span>	        <span class="mi">12</span>	<span class="mi">240</span>
+<span class="mi">1000</span>	<span class="mi">2</span>	        <span class="mi">13</span>	<span class="mi">260</span>
+<span class="mi">1000</span>	<span class="mi">2</span>       	<span class="mi">14</span>	<span class="mi">280</span>
+<span class="mi">1000</span>	<span class="mi">2</span>	        <span class="mi">15</span>	<span class="mi">300</span>
 </pre></div>
 
      </div>
@@ -17983,522 +18097,6 @@ a.anchor-link {
 </div>
 </div>
 
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Assignment-8">Assignment 8<a class="anchor-link" href="#Assignment-8">&#182;</a></h1>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">-----------</span> <span class="n">q1</span> <span class="mi">1</span><span class="o">-</span><span class="n">Find</span> <span class="n">those</span> <span class="n">salesperson</span> <span class="n">name</span> <span class="n">who</span> <span class="n">live</span> <span class="ow">in</span> <span class="nb">any</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> <span class="n">city</span> <span class="n">of</span> <span class="n">customers</span>
-<span class="o">--</span><span class="p">(</span><span class="n">do</span> <span class="n">it</span> <span class="n">both</span> <span class="k">with</span> <span class="n">sub</span><span class="o">-</span><span class="n">query</span> <span class="ow">and</span> <span class="n">join</span><span class="p">)</span>
-<span class="o">--</span> <span class="n">join</span>
-
-<span class="n">select</span> <span class="n">distinct</span> <span class="n">sname</span>  <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">inner</span> <span class="n">join</span>  <span class="n">customers</span> <span class="n">on</span> <span class="n">salespeople</span><span class="o">.</span><span class="n">city</span><span class="o">=</span><span class="n">customers</span><span class="o">.</span><span class="n">city</span><span class="p">;</span>
-
-<span class="o">--</span><span class="ow">or</span> 
-<span class="n">select</span> <span class="n">distinct</span> <span class="n">s1</span><span class="o">.</span><span class="n">snum</span> <span class="p">,</span><span class="n">s1</span><span class="o">.</span><span class="n">sname</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span><span class="p">,</span><span class="n">customers</span> <span class="n">c1</span> <span class="n">where</span> <span class="n">s1</span><span class="o">.</span><span class="n">city</span><span class="o">=</span><span class="n">c1</span><span class="o">.</span><span class="n">city</span><span class="p">;</span>
-
-
-<span class="o">--</span> <span class="n">subquery</span> <span class="n">सबक्वेरी</span>
-
-<span class="n">select</span> <span class="n">sname</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">where</span> <span class="n">city</span> <span class="ow">in</span> <span class="p">(</span><span class="n">select</span> <span class="n">city</span> <span class="kn">from</span> <span class="nn">customers</span><span class="p">);</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SNUM</span>	<span class="n">SNAME</span>
-<span class="mi">1002</span>	<span class="n">Serres</span>    
-<span class="mi">1001</span>	<span class="n">Peel</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">---------------</span><span class="n">q2</span>
-<span class="o">--</span><span class="mi">2</span><span class="o">-</span><span class="n">Find</span> <span class="n">those</span> <span class="n">salesperson</span> <span class="n">name</span><span class="p">,</span><span class="n">customers</span> <span class="n">name</span> <span class="n">who</span> <span class="n">belong</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">one</span> <span class="n">of</span> <span class="n">the</span> 
-<span class="o">--</span><span class="n">city</span> <span class="n">of</span> <span class="n">customers</span>
-<span class="o">--</span><span class="p">(</span><span class="n">do</span> <span class="n">it</span> <span class="n">both</span> <span class="k">with</span> <span class="n">sub</span><span class="o">-</span><span class="n">query</span> <span class="ow">and</span> <span class="n">join</span><span class="p">)</span>
-
-<span class="o">--</span> <span class="n">subquery</span>    <span class="n">मैंने</span> <span class="n">एक</span> <span class="n">कॉलम</span> <span class="n">में</span> <span class="n">आउटपुट</span> <span class="n">प्राप्त</span> <span class="n">करने</span> <span class="n">के</span> <span class="n">लिए</span> <span class="n">यूनियन</span>  <span class="n">का</span> <span class="n">उपयोग</span> <span class="n">और</span> <span class="n">डुप्लिकेट</span> <span class="n">को</span> <span class="n">निकालने</span> <span class="n">के</span> <span class="n">लिए</span> <span class="n">किया</span><span class="err">।</span>
-
-<span class="n">select</span> <span class="n">distinct</span> <span class="n">c1</span><span class="o">.</span><span class="n">cname</span> <span class="k">as</span> <span class="n">name</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span> <span class="p">,</span> <span class="n">customers</span> <span class="n">c1</span> <span class="n">where</span> <span class="n">c1</span><span class="o">.</span><span class="n">city</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="n">select</span> <span class="n">city</span> <span class="kn">from</span> <span class="nn">salespeople</span><span class="p">)</span>  <span class="n">union</span> <span class="nb">all</span>
-<span class="n">select</span> <span class="n">distinct</span> <span class="n">s1</span><span class="o">.</span><span class="n">sname</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span> <span class="p">,</span> <span class="n">customers</span> <span class="n">c1</span> <span class="n">where</span> <span class="n">s1</span><span class="o">.</span><span class="n">city</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="n">select</span> <span class="n">city</span> <span class="kn">from</span> <span class="nn">customers</span><span class="p">);</span>   
-
-
-<span class="o">--</span><span class="n">join</span>  <span class="n">मैंने</span> <span class="n">एक</span> <span class="n">कॉलम</span> <span class="n">में</span> <span class="n">आउटपुट</span> <span class="n">प्राप्त</span> <span class="n">करने</span> <span class="n">के</span> <span class="n">लिए</span> <span class="n">यूनियन</span> <span class="n">का</span> <span class="n">उपयोग</span> <span class="n">किया</span><span class="err">।</span>
-
-<span class="n">select</span> <span class="n">s1</span><span class="o">.</span><span class="n">sname</span> <span class="k">as</span> <span class="n">name</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span><span class="p">,</span><span class="n">customers</span> <span class="n">c1</span> <span class="n">where</span> <span class="n">s1</span><span class="o">.</span><span class="n">city</span><span class="o">=</span><span class="n">c1</span><span class="o">.</span><span class="n">city</span>  <span class="n">union</span>  
-<span class="n">select</span> <span class="n">c1</span><span class="o">.</span><span class="n">cname</span>  <span class="k">as</span> <span class="n">name</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span><span class="p">,</span><span class="n">customers</span> <span class="n">c1</span> <span class="n">where</span> <span class="n">s1</span><span class="o">.</span><span class="n">city</span><span class="o">=</span><span class="n">c1</span><span class="o">.</span><span class="n">city</span><span class="p">;</span>   
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># subquery </span>
-<span class="n">NAME</span>
-<span class="n">Liu</span>       
-<span class="n">clements</span>  
-<span class="n">Hoffman</span>   
-<span class="n">Cisneros</span>  
-<span class="n">Serres</span>    
-<span class="n">Peel</span>   
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># joins </span>
-<span class="n">NAME</span>
-<span class="n">Cisneros</span>  
-<span class="n">Hoffman</span>   
-<span class="n">Liu</span>       
-<span class="n">Peel</span>      
-<span class="n">Serres</span>    
-<span class="n">clements</span>  
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">---------------</span><span class="n">q3</span>
-<span class="o">--</span><span class="mi">3</span><span class="o">-</span><span class="n">Find</span> <span class="n">those</span> <span class="n">salesperson</span> <span class="n">name</span> <span class="n">who</span> <span class="n">belong</span> <span class="n">to</span> <span class="n">the</span> <span class="n">city</span> <span class="n">of</span> <span class="n">their</span> <span class="n">customer</span>     <span class="o">--</span><span class="ow">in</span> <span class="n">this</span> <span class="n">do</span> <span class="n">we</span> <span class="n">have</span> <span class="n">to</span> <span class="n">refer</span> <span class="n">orders</span> <span class="ow">or</span> <span class="ow">not</span> <span class="p">,</span> <span class="n">i</span> <span class="n">have</span> <span class="n">done</span> <span class="n">both</span> 
-<span class="o">--</span><span class="p">(</span><span class="n">do</span> <span class="n">it</span> <span class="n">both</span> <span class="k">with</span> <span class="n">sub</span><span class="o">-</span><span class="n">query</span> <span class="ow">and</span> <span class="n">join</span><span class="p">)</span>
-
-<span class="o">--</span><span class="n">join</span>
-<span class="n">select</span> <span class="n">distinct</span> <span class="n">s1</span><span class="o">.</span><span class="n">snum</span><span class="p">,</span> <span class="n">s1</span><span class="o">.</span><span class="n">sname</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span><span class="p">,</span> <span class="n">customers</span> <span class="n">c1</span> <span class="n">where</span> <span class="n">s1</span><span class="o">.</span><span class="n">snum</span><span class="o">=</span><span class="n">c1</span><span class="o">.</span><span class="n">snum</span> <span class="ow">and</span> <span class="n">s1</span><span class="o">.</span><span class="n">city</span><span class="o">=</span><span class="n">c1</span><span class="o">.</span><span class="n">city</span><span class="p">;</span>
-<span class="o">--</span> <span class="k">if</span> <span class="n">we</span> <span class="n">have</span> <span class="n">customers</span> <span class="ow">and</span> <span class="n">salepeople</span> <span class="k">as</span> <span class="n">related</span> <span class="ow">in</span> <span class="n">orders</span> <span class="o">//</span>  <span class="n">ग्राहक</span><span class="p">,</span> <span class="n">आदेश</span> <span class="n">और</span> <span class="n">salespeople</span> <span class="n">संबंधित</span> <span class="n">हैं</span>
-
-<span class="n">SELECT</span> <span class="n">distinct</span> <span class="n">orders</span><span class="o">.</span><span class="n">snum</span>
-<span class="n">FROM</span> <span class="n">orders</span>
-<span class="n">JOIN</span> <span class="n">salespeople</span>
-  <span class="n">ON</span> <span class="n">orders</span><span class="o">.</span><span class="n">snum</span> <span class="o">=</span> <span class="n">salespeople</span><span class="o">.</span><span class="n">snum</span>
-<span class="n">JOIN</span> <span class="n">customers</span>
-  <span class="n">ON</span> <span class="n">orders</span><span class="o">.</span><span class="n">cnum</span><span class="o">=</span><span class="n">customers</span><span class="o">.</span><span class="n">cnum</span> <span class="n">where</span> <span class="n">salespeople</span><span class="o">.</span><span class="n">city</span><span class="o">=</span><span class="n">customers</span><span class="o">.</span><span class="n">city</span><span class="p">;</span>
-
-<span class="o">--</span><span class="n">subquery</span>  <span class="o">//</span> <span class="n">सबक्वेरी</span>
-<span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span> <span class="n">where</span> <span class="n">exists</span> <span class="p">(</span><span class="n">select</span> <span class="n">c1</span><span class="o">.</span><span class="n">snum</span> <span class="kn">from</span> <span class="nn">customers</span> <span class="n">c1</span> <span class="n">where</span> <span class="n">c1</span><span class="o">.</span><span class="n">city</span><span class="o">=</span><span class="n">s1</span><span class="o">.</span><span class="n">city</span><span class="p">);</span>  <span class="o">--</span><span class="n">this</span> <span class="ow">is</span> <span class="n">correlated</span> <span class="n">but</span> <span class="n">how</span> <span class="n">to</span> <span class="n">do</span> <span class="k">with</span> <span class="n">subquery</span> <span class="n">simply</span> <span class="o">//</span> <span class="n">यह</span> <span class="n">सहसंबद्ध</span> <span class="n">है</span> <span class="n">लेकिन</span> <span class="n">सरलता</span> <span class="n">से</span> <span class="n">कैसे</span> <span class="n">किया</span> <span class="n">जाए</span>
-
-<span class="o">--</span> <span class="k">if</span> <span class="n">we</span> <span class="n">have</span> <span class="n">customers</span> <span class="ow">and</span> <span class="n">salepeople</span> <span class="k">as</span> <span class="n">related</span> <span class="ow">in</span> <span class="n">orders</span> <span class="n">then</span> <span class="o">--</span> <span class="n">correct</span> <span class="ow">or</span> <span class="ow">not</span>  <span class="n">but</span> <span class="n">it</span> <span class="ow">is</span>  <span class="n">giving</span> <span class="n">right</span> <span class="n">output</span>  <span class="n">यह</span> <span class="n">सही</span> <span class="n">आउटपुट</span> <span class="n">दे</span> <span class="n">रहा</span> <span class="n">है</span>
-<span class="n">select</span> <span class="n">distinct</span> <span class="n">s1</span><span class="o">.</span><span class="n">snum</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span> <span class="n">where</span> <span class="n">s1</span><span class="o">.</span><span class="n">city</span> <span class="ow">in</span> <span class="p">(</span><span class="n">select</span> <span class="n">c1</span><span class="o">.</span><span class="n">city</span> <span class="kn">from</span> <span class="nn">customers</span> <span class="n">c1</span> <span class="n">where</span> <span class="n">c1</span><span class="o">.</span><span class="n">cnum</span> <span class="ow">in</span> <span class="p">(</span><span class="n">select</span> <span class="n">o1</span><span class="o">.</span><span class="n">cnum</span> <span class="kn">from</span> <span class="nn">orders</span> <span class="n">o1</span> <span class="n">where</span> <span class="n">o1</span><span class="o">.</span><span class="n">snum</span><span class="o">=</span><span class="n">s1</span><span class="o">.</span><span class="n">snum</span><span class="p">));</span>  
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># joins </span>
-<span class="n">SNUM</span>	<span class="n">SNAME</span>
-<span class="mi">1002</span>	<span class="n">Serres</span>    
-<span class="mi">1001</span>	<span class="n">Peel</span>      
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#join again </span>
-<span class="n">SNUM</span>
-<span class="mi">1002</span>
-<span class="mi">1001</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#coorelated subquery</span>
-<span class="n">SNUM</span>	<span class="n">SNAME</span>	    <span class="n">CITY</span>    	<span class="n">COMM</span>
-<span class="mi">1001</span>	<span class="n">Peel</span>      	<span class="n">London</span>    	<span class="o">.</span><span class="mi">12</span>
-<span class="mi">1002</span>	<span class="n">Serres</span>    	<span class="n">Sanjose</span>   	<span class="o">.</span><span class="mi">13</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># coorelated subquery </span>
-<span class="n">SNUM</span>
-<span class="mi">1001</span>
-<span class="mi">1002</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">---------------</span><span class="n">q4</span>
-<span class="o">--</span><span class="mi">4</span><span class="o">-</span><span class="n">Find</span> <span class="n">those</span> <span class="n">salesperson</span> <span class="n">name</span> <span class="n">who</span> <span class="n">belong</span> <span class="n">to</span> <span class="n">the</span> <span class="n">city</span> <span class="n">of</span> <span class="n">their</span> <span class="n">customer</span>
-<span class="o">--</span><span class="p">(</span><span class="n">do</span> <span class="n">it</span> <span class="k">with</span> <span class="n">co</span><span class="o">-</span><span class="n">related</span> <span class="n">sub</span><span class="o">-</span><span class="n">query</span><span class="p">)</span>
-<span class="o">--</span> <span class="n">same</span> <span class="k">as</span> <span class="n">above</span>   <span class="n">ऊपर</span> <span class="n">की</span> <span class="n">तरह</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">-----------------</span><span class="n">q5</span>
-<span class="o">--</span><span class="mi">5</span><span class="o">-</span><span class="n">Find</span> <span class="n">those</span> <span class="n">salesperson</span> <span class="n">name</span><span class="p">,</span><span class="n">customer</span> <span class="n">name</span> <span class="n">where</span> <span class="n">salesperson</span> <span class="ow">is</span> 
-<span class="o">--</span><span class="n">assigned</span><span class="o">/</span><span class="ow">not</span> <span class="n">assigned</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">customer</span>
-<span class="n">select</span> <span class="n">s1</span><span class="o">.</span><span class="n">sname</span> <span class="p">,</span> <span class="n">c1</span><span class="o">.</span><span class="n">cname</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span> <span class="n">right</span> <span class="n">outer</span> <span class="n">join</span> <span class="n">customers</span> <span class="n">c1</span> <span class="n">on</span> <span class="n">s1</span><span class="o">.</span><span class="n">snum</span> <span class="o">=</span><span class="n">c1</span><span class="o">.</span><span class="n">snum</span> <span class="p">;</span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SNAME</span>	    <span class="n">CNAME</span>
-<span class="n">Peel</span>      	<span class="n">Hoffman</span>   
-<span class="n">Peel</span>      	<span class="n">clements</span>  
-<span class="n">Serres</span>    	<span class="n">Liu</span>       
-<span class="n">Serres</span>    	<span class="n">Grass</span>     
-<span class="n">Motika</span>    	<span class="n">Pereira</span>   
-<span class="n">Rifkin</span>    	<span class="n">Cisneros</span>  
-<span class="n">Axelrod</span>   	<span class="n">Giovanni</span>  
- <span class="o">-</span> 	        <span class="n">clements</span>  
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">----------------</span><span class="n">q6</span>
-<span class="o">--</span><span class="mi">6</span><span class="o">-</span><span class="n">Find</span> <span class="n">those</span> <span class="n">customer</span> <span class="n">name</span> <span class="n">who</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">assigned</span> <span class="n">to</span> <span class="nb">any</span> <span class="n">salesperson</span>
-
-<span class="n">INSERT</span> <span class="n">INTO</span> <span class="n">Customers</span> <span class="n">VALUES</span> <span class="p">(</span><span class="mi">2012</span><span class="p">,</span><span class="s1">&#39;clements&#39;</span><span class="p">,</span><span class="s1">&#39;London&#39;</span><span class="p">,</span><span class="n">null</span><span class="p">);</span>
-<span class="n">select</span> <span class="n">cname</span> <span class="kn">from</span> <span class="nn">customers</span> <span class="n">where</span> <span class="n">snum</span> <span class="ow">is</span> <span class="n">null</span><span class="p">;</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output--&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output  &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output--&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">clements</span>  
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">----------------</span><span class="n">q7</span>
-<span class="o">--</span><span class="mi">7</span><span class="o">-</span><span class="n">Find</span> <span class="n">the</span> <span class="n">highest</span> <span class="n">order</span> <span class="n">of</span> <span class="n">each</span> <span class="n">salesperson</span>
-<span class="n">select</span> <span class="nb">max</span><span class="p">(</span><span class="n">amt</span><span class="p">),</span><span class="n">snum</span> <span class="kn">from</span> <span class="nn">orders</span> <span class="n">group</span> <span class="n">by</span> <span class="n">snum</span> <span class="p">;</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output--&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output  &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output--&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">MAX</span><span class="p">(</span><span class="n">AMT</span><span class="p">)</span>	<span class="n">SNUM</span>
-<span class="mi">1098</span>	<span class="mi">1007</span>
-<span class="mi">5160</span>	<span class="mi">1002</span>
-<span class="mi">9892</span>	<span class="mi">1001</span>
-<span class="mi">1713</span>	<span class="mi">1003</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">-----------------</span><span class="n">q8</span>
-<span class="o">--</span><span class="mi">8</span><span class="o">-</span><span class="n">Find</span> <span class="n">the</span> <span class="n">names</span> <span class="n">of</span> <span class="n">salesperson</span> <span class="ow">and</span> <span class="n">their</span> <span class="n">highest</span> <span class="n">order</span>
-<span class="n">select</span> <span class="nb">max</span><span class="p">(</span><span class="n">o1</span><span class="o">.</span><span class="n">amt</span><span class="p">),(</span><span class="n">select</span> <span class="n">s2</span><span class="o">.</span><span class="n">sname</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s2</span> <span class="n">where</span> <span class="n">s2</span><span class="o">.</span><span class="n">snum</span><span class="o">=</span><span class="n">o1</span><span class="o">.</span><span class="n">snum</span> <span class="p">)</span> <span class="kn">from</span> <span class="nn">orders</span> <span class="n">o1</span>  <span class="n">join</span>  <span class="n">salespeople</span> <span class="n">s1</span> <span class="n">on</span> <span class="n">o1</span><span class="o">.</span><span class="n">snum</span><span class="o">=</span><span class="n">s1</span><span class="o">.</span><span class="n">snum</span> <span class="n">group</span> <span class="n">by</span> <span class="n">o1</span><span class="o">.</span><span class="n">snum</span> <span class="p">;</span> <span class="o">--</span><span class="n">this</span> <span class="ow">is</span> <span class="n">correct</span> 
-<span class="n">select</span> <span class="n">s1</span><span class="o">.</span><span class="n">sname</span><span class="p">,</span> <span class="p">(</span><span class="n">select</span> <span class="nb">max</span><span class="p">(</span><span class="n">o1</span><span class="o">.</span><span class="n">amt</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">orders</span> <span class="n">o1</span> <span class="n">group</span> <span class="n">by</span> <span class="n">o1</span><span class="o">.</span><span class="n">snum</span> <span class="n">having</span> <span class="n">o1</span><span class="o">.</span><span class="n">snum</span><span class="o">=</span><span class="n">s1</span><span class="o">.</span><span class="n">snum</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span><span class="p">;</span>   <span class="o">--</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">also</span> <span class="n">correct</span> <span class="o">//</span><span class="n">यह</span> <span class="n">भी</span> <span class="n">सही</span> <span class="n">है</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output--&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output  &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output--&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Peel</span>      	<span class="mi">9892</span>
-<span class="n">Serres</span>    	<span class="mi">5160</span>
-<span class="n">Motika</span>    	 <span class="o">-</span> 
-<span class="n">Rifkin</span>    	<span class="mi">1098</span>
-<span class="n">Axelrod</span>   	<span class="mi">1713</span>
-<span class="n">Rafale</span>    	 <span class="o">-</span> 
-<span class="n">Axe</span>       	 <span class="o">-</span> 
-<span class="n">chapsi</span>    	 <span class="o">-</span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">-----------------</span><span class="n">q9</span>
-<span class="o">--</span><span class="mi">9</span><span class="o">-</span><span class="n">Find</span> <span class="n">those</span> <span class="n">orders</span> <span class="n">of</span> <span class="n">salesperson</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">more</span> <span class="n">than</span> <span class="n">his</span> <span class="n">average</span> <span class="n">orders</span>
-
-<span class="n">select</span> <span class="n">amt</span> <span class="kn">from</span> <span class="nn">orders</span> <span class="n">where</span> <span class="n">exists</span> <span class="p">(</span><span class="n">select</span> <span class="n">amt</span> <span class="kn">from</span> <span class="nn">orders</span> <span class="n">group</span> <span class="n">by</span> <span class="n">snum</span> <span class="n">having</span> <span class="n">amt</span><span class="o">&gt;</span><span class="n">avg</span><span class="p">(</span><span class="n">amt</span><span class="p">));</span>  <span class="o">--</span><span class="n">i</span> <span class="n">cannot</span> <span class="n">use</span> <span class="n">this</span> <span class="n">beacause</span> <span class="n">amt</span> <span class="o">&gt;</span> <span class="n">avg</span><span class="p">(</span><span class="n">amt</span><span class="p">)</span> <span class="ow">not</span> <span class="n">a</span> <span class="n">group</span> <span class="n">by</span> <span class="n">expression</span> 
-
-<span class="n">select</span> <span class="n">o1</span><span class="o">.</span><span class="n">amt</span> <span class="kn">from</span> <span class="nn">orders</span> <span class="n">o1</span> <span class="n">where</span> <span class="n">o1</span><span class="o">.</span><span class="n">amt</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">select</span> <span class="n">avg</span><span class="p">(</span><span class="n">o2</span><span class="o">.</span><span class="n">amt</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">orders</span> <span class="n">o2</span> <span class="n">group</span> <span class="n">by</span> <span class="n">o2</span><span class="o">.</span><span class="n">snum</span> <span class="n">having</span> <span class="n">o2</span><span class="o">.</span><span class="n">snum</span><span class="o">=</span><span class="n">o1</span><span class="o">.</span><span class="n">snum</span><span class="p">);</span>   <span class="o">--</span><span class="n">this</span> <span class="ow">is</span> <span class="n">correct</span> <span class="n">यह</span> <span class="n">सही</span> <span class="n">है</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output--&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output  &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output--&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">AMT</span>
-<span class="mi">5160</span>
-<span class="mi">9892</span>
-<span class="mi">5160</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">------------------</span><span class="n">q10</span>
-<span class="o">--</span><span class="mi">10</span><span class="o">-</span><span class="n">List</span> <span class="n">those</span> <span class="n">salesperson</span> <span class="n">who</span> <span class="n">has</span> <span class="n">more</span> <span class="n">than</span> <span class="n">two</span> <span class="n">customers</span><span class="o">.</span>
-<span class="o">--</span><span class="p">(</span><span class="n">use</span> <span class="nb">all</span> <span class="mi">3</span> <span class="n">methods</span><span class="p">)</span>
-
-<span class="o">--</span>  <span class="n">join</span>
-<span class="o">--</span> <span class="n">joins</span> <span class="o">+</span> <span class="n">coorelated</span> <span class="n">subqueries</span> 
-<span class="n">select</span> <span class="n">count</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">snum</span><span class="p">),</span> <span class="p">(</span><span class="n">select</span> <span class="n">s1</span><span class="o">.</span><span class="n">sname</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span> <span class="n">where</span> <span class="n">s1</span><span class="o">.</span><span class="n">snum</span> <span class="o">=</span> <span class="n">c1</span><span class="o">.</span><span class="n">snum</span> <span class="p">)</span> <span class="kn">from</span> <span class="nn">customers</span> <span class="n">c1</span> <span class="n">inner</span> <span class="n">join</span> <span class="n">salespeople</span> <span class="n">s1</span> <span class="n">on</span> <span class="n">s1</span><span class="o">.</span><span class="n">snum</span><span class="o">=</span><span class="n">c1</span><span class="o">.</span><span class="n">snum</span> <span class="n">group</span> <span class="n">by</span>  <span class="n">c1</span><span class="o">.</span><span class="n">snum</span> <span class="n">having</span> <span class="n">count</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">snum</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">;</span>  <span class="o">--</span><span class="n">correct</span> 
-
-<span class="o">--</span> <span class="n">purely</span> <span class="n">joins</span> <span class="n">but</span> <span class="ow">not</span> <span class="n">working</span> <span class="o">--</span><span class="n">ज्वाइन</span> <span class="n">कर</span> <span class="n">लिया</span> <span class="n">है</span> <span class="n">लेकिन</span>  <span class="n">काम</span> <span class="n">नहीं</span> <span class="n">कर</span> <span class="n">रहा</span> <span class="n">है</span> <span class="n">यह</span> <span class="n">क्वेरी</span> <span class="n">हमारे</span> <span class="n">साथ</span> <span class="n">धोखा</span> <span class="n">कर</span> <span class="n">रही</span> <span class="n">है</span> 
-<span class="n">select</span> <span class="n">s1</span><span class="o">.</span><span class="n">sname</span> <span class="kn">from</span> <span class="nn">customers</span> <span class="n">c1</span> <span class="n">inner</span> <span class="n">join</span> <span class="n">salespeople</span> <span class="n">s1</span> <span class="n">on</span> <span class="n">s1</span><span class="o">.</span><span class="n">snum</span><span class="o">=</span><span class="n">c1</span><span class="o">.</span><span class="n">snum</span> <span class="n">group</span> <span class="n">by</span>  <span class="n">c1</span><span class="o">.</span><span class="n">snum</span> <span class="n">having</span> <span class="n">count</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">snum</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">;</span>     <span class="o">--</span><span class="n">यह</span> <span class="n">काम</span> <span class="n">क्यों</span> <span class="n">नहीं</span> <span class="n">कर</span> <span class="n">रही</span> <span class="n">है</span>   <span class="ow">in</span> <span class="n">this</span> <span class="n">dont</span> <span class="n">use</span> <span class="n">s1</span><span class="o">.</span><span class="n">sname</span> <span class="p">,</span> <span class="n">use</span> <span class="n">s1</span><span class="o">.</span><span class="n">snum</span> 
-
-<span class="o">--</span> <span class="n">select</span> <span class="n">s1</span><span class="o">.</span><span class="n">snum</span> <span class="kn">from</span> <span class="nn">customers</span> <span class="n">c1</span> <span class="n">inner</span> <span class="n">join</span> <span class="n">salespeople</span> <span class="n">s1</span> <span class="n">on</span> <span class="n">s1</span><span class="o">.</span><span class="n">snum</span><span class="o">=</span><span class="n">c1</span><span class="o">.</span><span class="n">snum</span> <span class="n">group</span> <span class="n">by</span> <span class="n">c1</span><span class="o">.</span><span class="n">snum</span> <span class="n">having</span> <span class="n">count</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">snum</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">2</span><span class="p">;</span>
-
-<span class="o">--</span> <span class="n">purely</span> <span class="n">joins</span>   <span class="n">यह</span> <span class="n">शुद्ध</span> <span class="n">जुड़ाव</span> <span class="n">है</span>
-<span class="n">select</span> <span class="n">s1</span><span class="o">.</span><span class="n">sname</span><span class="p">,</span> <span class="n">count</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">sname</span><span class="p">)</span>  <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span> <span class="n">inner</span> <span class="n">join</span> <span class="n">customers</span> <span class="n">c1</span> <span class="n">on</span> <span class="n">s1</span><span class="o">.</span><span class="n">snum</span><span class="o">=</span><span class="n">c1</span><span class="o">.</span><span class="n">snum</span>  <span class="n">group</span> <span class="n">by</span> <span class="n">s1</span><span class="o">.</span><span class="n">sname</span> <span class="n">having</span> <span class="n">count</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">sname</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">;</span>  <span class="o">--</span><span class="n">correct</span>
-
-<span class="o">--</span> <span class="n">subquery</span>   <span class="n">सबक्वेरी</span>
-<span class="n">select</span> <span class="o">*</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">where</span> <span class="n">snum</span> <span class="ow">in</span> <span class="p">(</span><span class="n">select</span> <span class="n">snum</span> <span class="kn">from</span> <span class="nn">customers</span> <span class="n">group</span> <span class="n">by</span> <span class="n">snum</span> <span class="n">having</span> <span class="n">count</span><span class="p">(</span><span class="n">snum</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">);</span>
-
-<span class="o">--</span><span class="n">coorelated</span> <span class="n">subquery</span>   <span class="n">सहसंबद्ध</span> <span class="n">सबक्वेरी</span>
-<span class="n">select</span> <span class="n">count</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">snum</span><span class="p">),</span> <span class="p">(</span><span class="n">select</span> <span class="n">s1</span><span class="o">.</span><span class="n">sname</span> <span class="kn">from</span> <span class="nn">salespeople</span> <span class="n">s1</span> <span class="n">where</span>  <span class="n">s1</span><span class="o">.</span><span class="n">snum</span> <span class="o">=</span> <span class="n">c1</span><span class="o">.</span><span class="n">snum</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">customers</span> <span class="n">c1</span> <span class="n">group</span> <span class="n">by</span> <span class="p">(</span><span class="n">snum</span> <span class="p">)</span> <span class="n">having</span> <span class="n">count</span><span class="p">(</span><span class="n">c1</span><span class="o">.</span><span class="n">snum</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">;</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">output &#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;<a class="anchor-link" href="#output-&#2313;&#2340;&#2381;&#2346;&#2366;&#2342;&#2344;">&#182;</a></h4>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">SNUM</span>
-<span class="mi">1001</span>
-<span class="mi">1002</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>2   Peel<br>
-2   Serres</p>
-
-</div>
 </div>
 </body>
 

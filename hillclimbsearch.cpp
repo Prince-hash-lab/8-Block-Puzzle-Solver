@@ -222,18 +222,17 @@ int main() {
 
     //intial state
     int initial[n][n] =
-    {
-        {2, 0, 3},
-        {1, 8, 4},
+    {   {1, 2, 3},
+        {8, 0, 4},
         {7, 6, 5}
     };
  
    //final state
     int final[n][n] =
     {
-        {1, 2, 3},
-        {8, 0, 4},
-        {7, 6, 5}
+        {2, 8, 3},
+        {1, 5, 4},
+        {7, 6, 0}
     };
     count1=0;
 	int x = 0, y = 1;    //position of 0 initially   //शुरुआत में 0 का स्थान
