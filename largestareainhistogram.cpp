@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+/*
 int getMaxArea(int arr[],int n){
    int ps[n];
    int ns[n];
@@ -43,6 +43,42 @@ int getMaxArea(int arr[],int n){
    }
    return res;
 }
+*/
+long long getMaxArea(long long arr[], int n)
+    {
+        
+    long long res=0;
+    stack<int> s;
+    int tp1=0;
+    long long curr;
+    for(int i=0;i<n;i++)
+    {   
+        while(s.empty()==false && arr[s.top()]>=arr[i])
+        {
+            tp1=s.top();
+            
+            s.pop();
+            curr=arr[tp1]*(s.empty()?i:(i-s.top()-1));
+            res=max(res,curr);
+            cout<<res<<" ";
+        }
+        s.push(i);
+    }
+    while(s.empty()==false)
+    {
+           
+
+        tp1=s.top();
+        s.pop();
+        curr=arr[tp1]*(s.empty()?n:(n-s.top()-1));
+        res=max(res,curr); 
+        cout<<res<<" ";
+    }
+            cout<<"res is " <<res;
+
+    return res;
+        // Your code here
+    }
 
 // void func(int arr[], int n)
 // int ps[n];
@@ -61,7 +97,7 @@ int getMaxArea(int arr[],int n){
 // }
 int main() 
 { 
-    int arr[]={6,2,5,4,1,5,6};
+    long long arr[]={6,2,5,4,1,5,6};
     int n=7;
     cout<<"Maximum Area: "<<getMaxArea(arr,n);
     return 0; 
