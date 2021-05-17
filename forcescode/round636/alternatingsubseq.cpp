@@ -26,21 +26,34 @@ mt19937                 rng(chrono:: steady_clock::now().time_since_epoch().coun
 
 typedef tree<int, null_type, less<int> , rb_tree_tag,tree_order_statistics_node_update> pbds;
 
+bool sign(int num)
+{
+    return num>0;
+}
+
 int32_t main()
 {
     FIO;
     w(t)
     {
         int n;cin>>n;
-        int x;
-        for(int k=2;k<=35;++k)
+        mk(arr,n,int);
+        for(int i=0;i<n;i++)
+          cin>>arr[i];
+        int ans=0;
+        for(int i=0;i<n;++i)
         {
-            int den=pow(2,k)-1;
-            if(n%den)  continue;
-            x=n/den;
-            break;
+            int j=i;
+            int mx=arr[i];
+            while(j<n && sign(arr[i])==sign(arr[j]))
+                mx=max(arr[j],mx),j++;
+            i=j-1;
+            ans+=mx;
+
         }
-        cout<<x<<'\n';
-    }
+        cout<<ans<<'\n';
+
+        }
+    
     return 0;
 }
