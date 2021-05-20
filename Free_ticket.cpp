@@ -27,15 +27,15 @@ for (int i=0; i<size ; i++)
 
  // } Driver Code Ends
 //User function Template for C++
-// using namespace __gnu_pbds;
+using namespace __gnu_cxx;
 #define ff              first
 #define ss              second
-// #define int             long long
+#define int             long long
 #define pb              push_back
 #define mp              make_pair
 #define pii             pair<int,int>
 #define vi              vector<int>
-#define vpii            vector<pii>
+#define vpii            vector< pii >
 #define mii             map<int,int>
 #define pq              priority_queue
 #define pqb             priority_queue<int>
@@ -50,39 +50,65 @@ for (int i=0; i<size ; i++)
 #define w(x)            int x ; cin>>x;while(x--)
 #define FIO             ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0)
 // mt19937                 rng(chrono:: steady_clock::now().time_since_epoch().count());
+#define ce 				cout<<"\n";
 
-void addedge(vpii adj[],int u, int v,int w)
-{
-    adj[u].push_back(mp(v,w));
-    adj[v].push_back(mp(u,w));
-}
+// void addedge(vpii adj[],int u, int v,int w)
+// {
+//     adj[u].push_back(mp(v,w));
+//     adj[v].push_back(mp(u,w));
+//     cout<<" edge added is "<<u<<" "<<v<<" "<<w<<endl;
+// }
 
-void printgraph(vpii adj[],int V)
-{
-    int v,w;
-    fo(u,0,V)
-    {
-        cout<<" Node "<<u<<" makes an edge with \n";
-        for(vpii ::iterator it=adj[u].begin();it!=adj[u].end();it++)
-        {
-            v=it->first;
-            w=it->second;
-            cout<<"\tNode"<<v<<" with edge weight ="<<w<< " \n ";
-        }
-        cout<<"\n";
-    }
-}
+// void printgraph(vpii adj[],int V)
+// {
+//     int v,w;
+//     cout<<" in print graph function "<<endl;
+//     fo(u,0,V)
+//     {
+//         cout<<" Node "<<u<<" makes an edge with \n";
+//         for(vpii ::iterator it=adj[u].begin();it!=adj[u].end();it++)
+//         {
+//             v=it->first;
+//             w=it->second;
+//             cout<<"\tNode"<<v<<" with edge weight ="<<w<< " \n ";
+//         }
+//         ce
+//     }
+// }
 
-int main()
+
+int32_t main()
 {
 	FIO;
 	int v,e,s,d,w;
     cin>>v>>e;
-    vpii adj[v];
+    vector<vi > edges;
     fo(i,0,e)
-    {    cin>>s>>d>>w;
-        addedge(adj,s,d,w);
-    }
-    printgraph(adj,v);
+    {   cin>>s>>d>>w;
+        edges.push_back({s,d,w});4
+    } 
+    
+    // vpii ::iterator it;
+    // fo(j,0,v)
+    // {  it=adj[j].begin();
+    //     cout<<" ";
+    // }
+
+    // fo(i,0,e)
+    // {    cin>>s>>d>>w;
+    //      adj[s][d]=w;
+    //      adj[d][s]=w;
+    // }
+
+    // printgraph(adj,v);
+    
 	return 0;
 }
+/*
+4 5
+1 2 10
+1 3 24
+2 3 2
+2 4 15
+3 4 7
+*/
