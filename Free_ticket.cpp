@@ -51,19 +51,38 @@ for (int i=0; i<size ; i++)
 #define FIO             ios_base::sync_with_stdio(0); cin.tie(0);cout.tie(0)
 // mt19937                 rng(chrono:: steady_clock::now().time_since_epoch().count());
 
-void addedge(vector<int> adj[],int u, int v)
+void addedge(vpii adj[],int u, int v,int w)
 {
-    adj[u].push_back(v);
-    adj[v].push_back(u);
+    adj[u].push_back(mp(v,w));
+    adj[v].push_back(mp(u,w));
 }
 
-int32_t main()
+void printgraph(vpii adj[],int V)
+{
+    int v,w;
+    fo(u,0,V)
+    {
+        cout<<" Node "<<u<<" makes an edge with \n";
+        for(vpii ::iterator it=adj[u].begin();it!=adj[u].end();it++)
+        {
+            v=it->first;
+            w=it->second;
+            cout<<"\tNode"<<v<<" with edge weight ="<<w<< " \n ";
+        }
+        cout<<"\n";
+    }
+}
+
+int main()
 {
 	FIO;
-	int v,e;
+	int v,e,s,d,w;
     cin>>v>>e;
     vpii adj[v];
-    fo()
-    
+    fo(i,0,e)
+    {    cin>>s>>d>>w;
+        addedge(adj,s,d,w);
+    }
+    printgraph(adj,v);
 	return 0;
 }
