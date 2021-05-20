@@ -85,7 +85,7 @@ int32_t main()
     vector<vi > edges;
     fo(i,0,e)
     {   cin>>s>>d>>w;
-        edges.push_back({s,d,w});4
+        edges.push_back({s,d,w});
     } 
     
     // vpii ::iterator it;
