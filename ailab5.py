@@ -43,11 +43,13 @@ print(arr1)
 # generators :- next two functions 
 import snoop 
 @snoop
+
 def fac(x):
     if x==1:
         return 1
     else:
         return (x* fac(x-1))
+
 if __name__=="__main__":
     num=5
     print("fact is ", fac(num))
