@@ -139,6 +139,7 @@ void bfs(int mat1[n][n],int k , int l, int mat2[n][n],node* parent)
     cout<<" _+_+__+_+_+_+_+_+_+__+_+_+_+_ "<<endl;
     que.push_back(arr[size]);
     size++;
+
     while(que.empty()!=true)
     {   sort(que.begin(),que.end(),mycmp);
         cout<<" in while ----------"<<endl;
@@ -173,6 +174,7 @@ void bfs(int mat1[n][n],int k , int l, int mat2[n][n],node* parent)
                               return;
                             }
                             size++;
+
                          }
                 else  {delete arr[size] ;}
             
@@ -252,6 +254,7 @@ int main() {
         {0, 4, 3},
         {7, 6, 5}
     };
+    
     count1=0;
 	int x = 1, y = 1;    //position of 0 initially
     node * parent =NULL;
