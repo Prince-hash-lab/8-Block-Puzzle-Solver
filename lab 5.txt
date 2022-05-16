@@ -1,0 +1,26 @@
+# # def echo(user,lang):
+# #     print("user: ",user,"lang:",lang)
+# # echo("prince","hindi and english")
+# def add(a,b):
+#     return a+b,a-b
+# print(add(2,3)[1])
+# def display(stu,*mk):
+#    for i in mk:
+#        print(i)
+# display("ad",{"sdfsa","dsf"})
+# # x=echo("a","b")
+# # print(x)
+# def fruit(*fr):
+#     print("my fav is ",fr[1])
+# fruit("masd",'dfa')
+# y=lambda : printx("hello") if (x>10) else print("fsdjkf")
+# y(10)
+# import sys
+# print("pyhtn :",sys.path)
+
+# import sys
+# a=int(sys.argv[1])
+# b=int(sys.argv[2])
+# sum=a+b
+# print(sum)
+import numpy as np
