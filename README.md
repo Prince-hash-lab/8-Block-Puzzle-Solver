@@ -1,2 +1,10 @@
 # 8-Block-Puzzle-Solver
-bfs, dfs , best first search , hill climb search , A* search algorithms on 8 puzzle problem.
+Algorithms Supported 
+1) Breadth first search 
+2) depth First search 
+3) Best first search 
+4) Hill climb search 
+5) A* Search Algorithms
+<p align="center">
+  <img src="https://github.com/Prince-hash-lab/8-Block-Puzzle-Solver/blob/master/Random%20work/4moves.png" width="750" height="250" title="hover text">
+</p>
