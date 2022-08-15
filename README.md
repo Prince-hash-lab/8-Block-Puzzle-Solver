@@ -6,5 +6,5 @@ Algorithms Supported
 4) Hill climb search 
 5) A* Search Algorithms
 <p align="center">
-  <img src="https://github.com/Prince-hash-lab/8-Block-Puzzle-Solver/blob/master/Random%20work/4moves.png" width="750" height="250" title="hover text">
+  <img src="https://github.com/Prince-hash-lab/8-Block-Puzzle-Solver/blob/master/Random%20work/4moves.png" width="1050" height="250" title="hover text">
 </p>
