@@ -13,8 +13,10 @@ class NUM
         {
             n=x;
         }
+	
         //function to display number
-        void dispNum(void)
+       
+       void dispNum(void)
         {
             cout << "value of n is: " << n;
         }
